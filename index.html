@@ -41,12 +41,19 @@
       line-height: 1.35;
       font-weight: 500;
     }
+    h1::after {
+  content: " • • •";
+  font-weight: 400;
+  letter-spacing: 8px;
+}
+
   </style>
 </head>
 
 <body>
   <div class="container">
-    <h1>Did you know? 🤔</h1>
+    <h1>Did you know?</h1>
+
     <div id="fact">Loading a delightfully useless fact…</div>
   </div>
 
