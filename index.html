@@ -1,31 +1,67 @@
-<meta charset="UTF-8">
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Did You Know?</title>
 
-<style>
-  html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(
-      circle at top,
-      #ff9a9e,
-      #fad0c4,
-      #fbc2eb
-    );
-    color: #222;
-    font-family: "Comic Sans MS", "Trebuchet MS", "Arial Rounded MT Bold", Arial, sans-serif;
-    overflow: hidden;
-  }
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(
+        circle at top,
+        #ff9a9e,
+        #fad0c4,
+        #fbc2eb
+      );
+      color: #222;
+      font-family: "Comic Sans MS", "Trebuchet MS", "Arial Rounded MT Bold", Arial, sans-serif;
+      overflow: hidden;
+    }
 
-  .container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    text-align: center;
-    padding: 60px;
-  }
+    .container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+      text-align: center;
+    }
 
-  h1 {
-    font-size: 120px;          /*
+    h1 {
+      font-size: 96px;        /* SAFE but very large */
+      margin: 0 0 40px 0;
+      font-weight: 700;
+    }
+
+    #fact {
+      font-size: 64px;        /* SAFE ceiling for Yodeck */
+      line-height: 1.35;
+      font-weight: 500;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Did you know? 🤔</h1>
+    <div id="fact">Loading a delightfully useless fact…</div>
+  </div>
+
+  <script>
+    fetch('https://uselessfacts.jsph.pl/random.json?language=en')
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+        document.getElementById("fact").innerText = data.text;
+      })
+      .catch(function() {
+        document.getElementById("fact").innerText =
+          "Fun fact loading failed… but curiosity still wins.";
+      });
+  </script>
+</body>
+</html>
